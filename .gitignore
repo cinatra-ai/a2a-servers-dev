@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.python-version
+
+# uv
+.uv/
+
+# Generated at runtime by signing_and_verifying (run_host.py / __main__.py)
+public_keys.json
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store

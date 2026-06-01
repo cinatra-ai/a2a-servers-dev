@@ -1,0 +1,15 @@
+a2a-servers-dev
+Copyright 2026 Cinatra
+
+This product includes software developed at the A2A Project
+(https://github.com/a2aproject/a2a-samples).
+
+The agent sources under helloworld/, dice_agent_rest/, signing_and_verifying/,
+number_guessing_game/, and adk_expense_reimbursement/ are derived from the
+"samples/python/agents/" directory of a2aproject/a2a-samples, pinned at commit
+df18eeda23e63b6deddf6f41f8f2bebd4aa48e08, licensed under the Apache License,
+Version 2.0.
+
+Cinatra-authored additions (per-agent Dockerfiles, the run_host*.py host
+launchers, and number_guessing_game/pyproject.toml) are licensed under the
+Apache License, Version 2.0.

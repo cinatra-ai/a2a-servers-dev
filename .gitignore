@@ -18,3 +18,4 @@ public_keys.json
 
 # OS / editor
 .DS_Store
+.planning/

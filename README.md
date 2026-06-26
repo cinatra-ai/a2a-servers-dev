@@ -8,6 +8,34 @@ A2A connector (agent discovery, task send, streaming, signed agent cards).
 > This repository is not a published package and is not consumed at runtime by the
 > Cinatra app — only by `cinatra setup` in development.
 
+## Purpose
+
+Cinatra's A2A connector lets users register and invoke external agents. To develop and
+test that connector locally — without standing up real third-party agents — this repo
+ships a curated set of sample A2A servers that cover the protocol surface Cinatra
+exercises: basic message exchange, streaming, LLM-backed tasks, and signed agent cards.
+
+Each agent is a self-contained Python service. Six peer servers run across six distinct
+host ports. The number-guessing sample also includes Bob, a CLI client used by the demo,
+but Bob is not exposed as an A2A HTTP server and is excluded from Cinatra's active
+`a2a-peers` docker-compose profile:
+
+| Agent | What it demonstrates |
+|-------|----------------------|
+| `helloworld` | Minimal A2A server: message/send, streaming, extended agent card |
+| `number_guessing_game` (Alice) | Multi-agent cooperation; stateful task exchange (no LLM) |
+| `number_guessing_game` (Carol) | Visualiser/shuffler role; multi-turn task references |
+| `dice_agent_rest` | LLM-backed REST agent (Google Gemini / `GOOGLE_API_KEY`) |
+| `signing_and_verifying` | AgentCard signing and signature verification |
+| `adk_expense_reimbursement` | Google ADK agent with webform-based multi-turn interaction (`GEMINI_API_KEY`) |
+
+The agent source under each `<agent>/` directory is vendored from the upstream
+[a2aproject/a2a-samples](https://github.com/a2aproject/a2a-samples) repository
+(`samples/python/agents/`), pinned at commit
+`df18eeda23e63b6deddf6f41f8f2bebd4aa48e08`. Cinatra-authored additions are the
+per-agent `Dockerfile`s, the `run_host*.py` host launchers, and
+`number_guessing_game/pyproject.toml`.
+
 ## How Cinatra uses this repo
 
 The Cinatra monorepo declares this repo in `package.json` under `cinatra.devApps`.
